@@ -1,8 +1,10 @@
 <?php
-	//error_reporting(0);
+	error_reporting(0);
 	require_once("connect.php");
 
-	$task = strip_tags($_GET['task']);
+
+	$task = strip_tags($_GET['task']?? '');
+	$admin = strip_tags($_GET['admin']?? '');
 
 	if($task=="logout") {
 		include("include/logout.php");
@@ -25,12 +27,10 @@
     <title>Gümüşhane </title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
-	<link href="css/changelog.css" rel="stylesheet"><!--Kendi oluşturduğumuz .css dosyası>
+	<link href="css/changelog.css" rel="stylesheet">
 	<!-->
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -122,9 +122,7 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="admin.php?a=slider">Slider</a></li>
-								<li><a href="admin.php?a=haberekle">Haber Ekle</a></li>
-								<li><a href="admin.php?a=haberler">Haberler</a></li>
+								<li><a href="index.php?task=admin&admin=yaziekle">Yazı Ekle</a></li>
 							</ul>
 						</div>
 					</div>
@@ -132,25 +130,28 @@
 			</div>
 		</div><!--/header-bottom-->
 		<?php }; ?>
-<?php
-		if($task=="login") {
-			include('include/login.php');
-		} elseif ($task=="slider") {
-			include('include/slider.php');
-		} elseif ($task=="haberekle") {
-			include('include/haberekle.php');
-		} elseif ($task=="haberler") {
-			include('include/haberler.php');
 
-		} elseif($task!="admin") {
-			include("include/mainpage.php");
-		}
+		<section>
+		<div class="container">
+			<div class="row">
+				<?php
+				if($task=="login") {
+					include('include/login.php');
+				} elseif ($task=="admin" and $admin=="slider") {
+					include('include/slider.php');
+				} elseif ($task=="admin" and $admin=="yaziekle") {
+					include('include/yaziekle.php');
+				} elseif ($task=="admin" and $admin=="haberler") {
+					include('include/haberler.php');
 
+				} elseif($task!="admin") {
+					include("include/mainpage.php");
+				}
 
-
-
-	?>
-	
+				?>
+			</div>
+		</div>
+	</section>
 	
 	<footer id="footer"><!--Footer-->
 		<div class="footer-bottom">
@@ -164,9 +165,6 @@
 
     <script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/price-range.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

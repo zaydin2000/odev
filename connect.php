@@ -6,4 +6,5 @@
 
 	mysqli_query($link,"SET NAMES UTF8");
 
+	define("HDD_YOLU", "D:/xampp/htdocs/odev/");
 ?>

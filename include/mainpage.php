@@ -66,7 +66,7 @@
 			<div class="row">
 				<div class="col-sm-9 col-sm-offset-1">
 					<div class="blog-post-area">
-						<h2 class="title text-center"> EN SON HABERLER</h2>
+						<h2 class="title text-center"> MİRASIMIZ</h2>
 						
 						<?php
 						
@@ -76,13 +76,13 @@
 								$s = $_GET["s"];
 							}
 
-							$sorgu = mysqli_query($link,"select * from haber");
+							$sorgu = mysqli_query($link,"select * from yazi");
 							$limit = 5; //Kayıtlar kaçar kaçar listelenecek
 							$kayitSayisi = mysqli_num_rows($sorgu); //Toplam Kayıt Sayısı
 							$sayfaSayisi = ceil($kayitSayisi/$limit); //Toplam Sayfa Sayısı
 							$baslangic = ($s*$limit)-$limit; //Hangi kayıttan başlanacak
 						
-							$sorgu = mysqli_query($link,"select * from haber order by id desc limit $baslangic,$limit");
+							$sorgu = mysqli_query($link,"select * from yazi order by id desc limit $baslangic,$limit");
 							
 							while($kayit=mysqli_fetch_array($sorgu)){
 								echo '<div class="single-blog-post">';
@@ -93,7 +93,7 @@
 								echo '</ul>';
 								echo '</div>';
 								echo '<a href="haber.php?id='.$kayit["id"].'">';
-								echo '<img src="images/'.$kayit["resim"].'" alt="">';
+								echo '<img src="'.$kayit["resim"].'" width=350>';
 								echo '</a>';
 								echo '<p>'.substr($kayit["metin"], 0, 350).'</p>';
 								echo '<a  class="btn btn-primary" href="haber.php?id='.$kayit["id"].'">Okumaya devam et</a>';
