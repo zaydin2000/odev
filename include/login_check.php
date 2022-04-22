@@ -5,7 +5,7 @@
 	$parola = md5(mysqli_real_escape_string($link,$_POST["parola"]));
 	
 	$sql = "SELECT * FROM uye WHERE email='$email' AND parola='$parola'";
-	//echo $sql;
+	echo $sql;
 	//exit;
 	$s = mysqli_num_rows(mysqli_query($link, $sql));
 	
@@ -14,11 +14,11 @@
 		
 		if($kullanici["yetki"] == 1){
 			if(isset($_POST['hatirla'])){
-				setcookie("ASID", $kullanici["session"], time()+86400*30);
+				setcookie("OK", $kullanici["session"], time()+86400*30);
 				header('Location: index.php');
 			}
 		
-			setcookie("ASID", $kullanici["session"]);
+			setcookie("OK", $kullanici["session"]);
 			header('Location: index.php');
 			
 		}else{
@@ -36,5 +36,5 @@
 		header('Location: index.php?task=login');
 	}
 	
-	mysqli_close($link);
+	//mysqli_close($link);
 ?>

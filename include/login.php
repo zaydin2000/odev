@@ -18,3 +18,21 @@
 			</div>
 		</div>
 	</section><!--/form-->
+    <script>
+    	
+    	function check_login(){
+    		var email = document.forms["giris"]["email"].value;
+    		var parola = document.forms["giris"]["parola"].value;
+		
+		if (email == "") {
+			alert("Lütfen geçerli bir email adresi giriniz.");
+			return false;
+		}
+		
+		if (parola == "") {
+			alert("Lütfen parolanızı giriniz.");
+			return false;
+		}
+		
+    	}
+    </script>

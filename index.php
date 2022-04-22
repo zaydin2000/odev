@@ -3,8 +3,9 @@
 	require_once("connect.php");
 
 
-	$task = strip_tags($_GET['task']?? '');
-	$admin = strip_tags($_GET['admin']?? '');
+	$task = strip_tags($_REQUEST['task']?? '');
+	$admin = strip_tags($_REQUEST['admin']?? '');
+	$kategori = strip_tags($_REQUEST['kategori']?? '');
 
 	if($task=="logout") {
 		include("include/logout.php");
@@ -14,6 +15,9 @@
 		include("include/login_check.php");
 	}
 
+	if(!isset($_COOKIE["OK"]) and $task=='admin'){
+		header('Location: index.php');
+	}
 
 ?>
 
@@ -53,13 +57,13 @@
 					<div class="col-sm-8">
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li  class="nav-item active"><a href="index.php" >Ana Sayfa</a></li>
-								<li class="nav-item"><a href="contact-us.php" class="nav-link" >Hakkımda</a></li>
-								<li class="nav-item"><a href="contact-us.php" class="nav-link" >Eğitim</a></li>
-								<li class="nav-item"><a href="contact-us.php" class="nav-link" >Şehrim</a></li>
-								<li class="nav-item"><a href="contact-us.php" class="nav-link" >Mirasımız</a></li>
-								<li class="nav-item"><a href="contact-us.php" class="nav-link" >İlgi Alanlarım</a></li>
-								<li class="nav-item"><a href="contact-us.php" class="nav-link" >İletişim</a></li>
+								<li  class="nav-item active"><a href="index.php" >ANA SAYFA</a></li>
+								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=Hakkımda" class="nav-link" >HAKKIMDA</a></li>
+								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=Eğitim" class="nav-link" >EĞİTİM</a></li>
+								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=Şehrimiz" class="nav-link" >ŞEHRİM</a></li>
+								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=Mirasımız" class="nav-link" >MİRASIMIZ</a></li>
+								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=İlgi_Alanlarım" class="nav-link" >İLGİ ALANLARIM</a></li>
+								<li class="nav-item"><a href="index.php?task=iletisim" class="nav-link" >İLETİŞİM</a></li>
 							</ul>
 						</div>
 					</div>
@@ -82,21 +86,21 @@
 											}
 										}
 										
-									}else if(isset($_COOKIE["ASID"])){
-										$sid = $_COOKIE["ASID"];
+									}else if(isset($_COOKIE["OK"])){
+										$sid = $_COOKIE["OK"];
 										$sql = mysqli_query($link, "SELECT * FROM uye WHERE session='$sid'");
 										
 										while($a = mysqli_fetch_array($sql)){
 											if($a){
-												echo '<li><a href="index.php?task=admin">'.$a["ad"].'</a></li>';
+												echo '<li><a href="index.php?task=admin">PANEL</a></li>';
 												echo '<li><a href="index.php?task=logout"><i class="fa fa-lock"></i> Çıkış</a></li>';
 											}else{
-												setcookie("ASID", "", time()-3600);
+												setcookie("OK", "", time()-3600);
 												echo '<script>window.location="index.php";</script>';
 											}
 										}
 									}else{
-										echo '<li><a href="index.php?task=login"><i class="fa fa-lock"></i> Giriş Yap/Üye Ol</a></li>';
+										echo '<li><a href="index.php?task=login"><i class="fa fa-lock"></i> Giriş Yap</a></li>';
 									}
 								
 								?>
@@ -176,6 +180,10 @@
 					include('include/yaziekle.php');
 				} elseif ($task=="yazi_view") {
 					include('include/yazi_view.php');
+				} elseif ($task=="yazi_listele") {
+					include('include/yazi_listele.php');
+				} elseif ($task=="iletisim") {
+					include('include/iletisim.php');
 
 				} elseif($task!="admin") {
 					include("include/mainpage.php");

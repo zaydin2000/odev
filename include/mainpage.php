@@ -54,7 +54,7 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-9 col-sm-offset-1">
+				<div class="col-sm-12">
 					<div class="blog-post-area">
 						<h2 class="title text-center"> MİRASIMIZ</h2>
 						
@@ -66,7 +66,7 @@
 							}
 
 							$sorgu = mysqli_query($link,"select * from yazi where kategori='Mirasımız'");
-							$limit = 5; //Kayıtlar kaçar kaçar listelenecek
+							$limit = 6; //Kayıtlar kaçar kaçar listelenecek
 							$kayitSayisi = mysqli_num_rows($sorgu); //Toplam Kayıt Sayısı
 							$sayfaSayisi = ceil($kayitSayisi/$limit); //Toplam Sayfa Sayısı
 							$baslangic = ($s*$limit)-$limit; //Hangi kayıttan başlanacak
@@ -74,7 +74,7 @@
 							$sorgu = mysqli_query($link,"select * from yazi where kategori='Mirasımız' order by id desc limit $baslangic,$limit");
 							
 							while($kayit=mysqli_fetch_array($sorgu)){
-								echo '<div class="single-blog-post">';
+								echo '<div class="col-sm-4 single-blog-post" style="height:600px;">';
 								echo '<h3>'.$kayit["baslik"].'</h3>';
 								echo '<div class="post-meta">';
 								echo '<ul>';
@@ -84,7 +84,7 @@
 								echo '<a href="index.php?task=yazi_view&yazi_id='.$kayit["id"].'">';
 								echo '<img src="'.$kayit["resim"].'" width=350>';
 								echo '</a>';
-								echo '<p>'.substr($kayit["metin"], 0, 350).'</p>';
+								echo '<p>'.substr($kayit["metin"], 0, 350).'...</p>';
 								echo '<a  class="btn btn-primary" href="index.php?task=yazi_view&yazi_id='.$kayit["id"].'">Okumaya devam et</a>';
 								echo '</div>';
 								
