@@ -6,7 +6,7 @@ Site tasarımı olarak Bootstrap içeren responsive bir yapı kullanılacak.
 
 Hakkında sayfası giriş sayfası niteliğinde olacak, kendimi tanıtan bilgiler (Hobiler, Etkinlikler vb ) , sevdiğim spor,etkinlik vb ait resimler, linkler vb. içerecek.
 
-Eğitim bilgilerini içeren CV niteliğinde samantic tagların kullanıldığı özgeçmiş sayfası olmalacak.
+Eğitim bilgilerini içeren CV niteliğinde samantic tagların kullanıldığı özgeçmiş sayfası olacak.
 
 Şehrim şeklinde bir sayfa olacak, bu sayfada memletimize ya da sevdiğimiz şehre ait bilgiler yer alacak. (Şehrin nufusu, gezilecek yerler vb) Sayfanın başında ya da sonunda en az 4 resimden oluşan bir slider yer alacak. Slider’da yer alan resimlere tıklandığında ilgili resimlere ait içeriklere link olacak. (İçerikler ayrıntılı olmadan site içersinde yer alacak)
 
