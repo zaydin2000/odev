@@ -24,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Gümüşhane </title>
+    <title>Kişisel Web Sayfası </title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
@@ -44,7 +44,9 @@
 </head><!--/head-->
 
 <body>
+
 	<header id="header"><!--header-->
+		<div class="bg"></div>
 		<div class="header_top"><!--header_top-->
 			<div class="container">
 				<div class="row">
@@ -103,6 +105,38 @@
 						</div>	
 					
 				</div>
+				<?php
+
+					$connect_web = simplexml_load_file('http://www.tcmb.gov.tr/kurlar/today.xml');
+					$usd_buying = $connect_web->Currency[0]->BanknoteBuying;
+					$usd_selling = $connect_web->Currency[0]->BanknoteSelling;
+					$euro_buying = $connect_web->Currency[3]->BanknoteBuying;
+					$euro_selling = $connect_web->Currency[3]->BanknoteSelling;
+					$jpy_buying = $connect_web->Currency[11]->BanknoteBuying;
+					$jpy_selling = $connect_web->Currency[11]->BanknoteSelling;
+					$gbp_buying = $connect_web->Currency[4]->BanknoteBuying;
+					$gbp_selling = $connect_web->Currency[4]->BanknoteSelling;
+					$sar_buying = $connect_web->Currency[10]->BanknoteBuying;
+					$sar_selling = $connect_web->Currency[10]->BanknoteSelling;
+					?>
+				<div class="row center">
+					<div class="col-sm-12 mavi">
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav collapse navbar-collapse ">
+								<li class="nav-item bosluk"><?php echo '  <b>USD Alış:</b> '.round($usd_buying,2); ?></li>
+								<li class="nav-item bosluk"><?php echo '  <b>USD Satış:</b> '.round($usd_selling,2); ?></li>
+								<li class="nav-item bosluk"><?php echo '  <b>EUR Alış:</b> '.round($euro_buying,2); ?></li>
+								<li class="nav-item bosluk"><?php echo ' <b>EUR Satış:</b> '.round($euro_selling,2); ?></li>
+								<li class="nav-item bosluk"><?php echo '  <b>JPY Alış:</b> '.round($jpy_buying,2); ?></li>
+								<li class="nav-item bosluk"><?php echo ' <b>JPY Satış:</b> '.round($jpy_selling,2); ?></li>
+								<li class="nav-item bosluk"><?php echo '  <b>GBP Alış:</b> '.round($gbp_buying,2); ?></li>
+								<li class="nav-item bosluk"><?php echo ' <b>GBP Satış:</b> '.round($gbp_selling,2); ?></li>
+								<li class="nav-item bosluk"><?php echo '  <b>SAR Alış:</b> '.round($sar_buying,2); ?></li>
+								<li class="nav-item bosluk"><?php echo ' <b>SAR Satış:</b> '.round($sar_selling,2); ?></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div><!--/header_top-->
 
@@ -135,18 +169,18 @@
 		<div class="container">
 			<div class="row">
 				<?php
+				//include("include/api.php");
 				if($task=="login") {
 					include('include/login.php');
-				} elseif ($task=="admin" and $admin=="slider") {
-					include('include/slider.php');
-				} elseif ($task=="admin" and $admin=="yaziekle") {
+				} elseif ($task=="admin") {
 					include('include/yaziekle.php');
-				} elseif ($task=="admin" and $admin=="haberler") {
-					include('include/haberler.php');
+				} elseif ($task=="yazi_view") {
+					include('include/yazi_view.php');
 
 				} elseif($task!="admin") {
 					include("include/mainpage.php");
 				}
+				
 
 				?>
 			</div>

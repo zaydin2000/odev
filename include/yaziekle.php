@@ -5,7 +5,7 @@
   if($islem=="ekle"){
     $baslik =  mysqli_real_escape_string($link, $_REQUEST["baslik"]);
     $kategori =  mysqli_real_escape_string($link, $_REQUEST["kategori"]);
-    $metin =  $_REQUEST["metin"];
+    $metin =  mysqli_real_escape_string($link, $_REQUEST["metin"]);
     $images 		= $_FILES["images"]["tmp_name"];
     $images_size 	= $_FILES["images"]["size"];
 
@@ -29,7 +29,7 @@
   if($islem=="update_save"){
     $baslik =  mysqli_real_escape_string($link, $_REQUEST["baslik"]);
     $kategori =  mysqli_real_escape_string($link, $_REQUEST["kategori"]);
-    $metin =  $_REQUEST["metin"];
+    $metin =  mysqli_real_escape_string($link, $_REQUEST["metin"]);
     $images 		= $_FILES["images"]["tmp_name"];
     $images_size 	= $_FILES["images"]["size"];
 
@@ -84,6 +84,7 @@
       <select name="kategori" id="kategori" class="form-control">
         <option value="Mirasımız" <?php if($fields[kategori]=="Mirasımız" and $islem=='update') { echo "selected"; }; ?>>Mirasımız</option>
         <option value="Slider" <?php if($fields[kategori]=="Slider" and $islem=='update') { echo "selected"; }; ?>>Slider</option>
+        <option value="Şehrimiz" <?php if($fields[kategori]=="Şehrimiz" and $islem=='update') { echo "selected"; }; ?>>Şehrimiz</option>
       </select>
     </div>
   </div>

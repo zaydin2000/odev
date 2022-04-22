@@ -146,3 +146,49 @@ ul.sub-menu {
   background-color: #FE980F;
   border-color: #FE980F;
 }
+
+.bg {
+  background-image: url("../images/bg.jpg");
+  background-color: #FFFFFF;
+  border: 0 none;
+  color: #FFFFFF;
+  padding: 5px 20px;
+  height: 200px;
+}
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+ 
+}
+.mavi {
+  background-color: #05c2fc;
+}
+.bosluk {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#imageContainer
+{
+    height:450px;
+    width: 940px;
+    margin-top: 20px;
+    position:relative;
+}
+
+#resim
+{    
+    position:absolute;
+    left:0;
+    top:0;
+    width: 940px;
+}
+#yazi
+{
+    z-index:100;
+    position:absolute;    
+    font-weight:bold; 
+    font-size: 48px;
+    color: #FE980F;
+    margin-top: 10px;
+}

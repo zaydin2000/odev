@@ -12,39 +12,29 @@
 						
 						<div class="carousel-inner">
 								<?php
-									$s = mysqli_query($link,"SELECT * FROM slider LIMIT 1");
+									$sql = mysqli_query($link,"SELECT * FROM yazi where kategori='Slider' LIMIT 0,3");
 								
-									if($slider = mysqli_fetch_array($s)){
-										
-										echo '<div class="item active">';
-										echo '<div class="col-sm-6">';
-										echo '<h1><span>'.$slider["baslik"].'</span></h1>';
-										echo '<h2>'.$slider["ikinci"].'</h2>';
-										echo '<p>'.$slider["detay"].'</p>';
-										echo '<a href="haber.php?id='.$slider["haber_id"].'" class="btn btn-default get">Şimdi oku</a></a>';
-										echo '</div>';
-										echo '<div class="col-sm-6">';
-										echo '<img src="images/'.$slider["foto"].'" class="girl img-responsive" alt="" />';
-										echo '</div>';
-										echo '</div>';
-									}
-									
-									$sql = mysqli_query($link,"SELECT * FROM slider LIMIT 1,3");
-									
+                                    $i=0;
 									while($slider = mysqli_fetch_array($sql)){
-										echo '<div class="item">';
-										echo '<div class="col-sm-6">';
-										echo '<h1><span>'.$slider["baslik"].'</span></h1>';
-										echo '<h2>'.$slider["ikinci"].'</h2>';
-										echo '<p>'.$slider["detay"].'</p>';
-										echo '<a href="haber.php?id='.$slider["haber_id"].'" class="btn btn-default get">Şimdi oku</a>';
+										
+										if($i==0) {
+                                            echo '<div class="item active">';
+                                        } else {
+                                            echo '<div class="item">';
+                                        }
+                                        echo '<div class="col-sm-12"  id="imageContainer">';
+										echo '<span id="yazi">'.$slider["baslik"].'</span>';
+										//echo '<h2 id="yazi">'.$slider["ikinci"].'</h2>';
+										//echo '<p id="yazi">'.$slider["detay"].'</p>';
+										//echo '<a id="yazi" href="index.php?id='.$slider["haber_id"].'" class="btn btn-default get">Şimdi oku</a></a>';
+										//echo '</div>';
+										//echo '<div class="col-sm-8">';
+										echo '<a href="index.php?task=yazi_view&yazi_id='.$slider["id"].'" ><img id="resim" src="'.$slider["resim"].'"  alt="" /></a>';
 										echo '</div>';
-										echo '<div class="col-sm-6">';
-										echo '<img src="images/'.$slider["foto"].'" class="girl img-responsive" alt="" />';
 										echo '</div>';
-										echo '</div>';
-									}
-
+                                        $i++;
+                                    }
+									
 								?>							
 						</div>
 						
@@ -68,21 +58,20 @@
 					<div class="blog-post-area">
 						<h2 class="title text-center"> MİRASIMIZ</h2>
 						
-						<?php
-						
+						<?php						
 							if(!isset($_GET["s"])){
 								$s = 1;
 							}else{
 								$s = $_GET["s"];
 							}
 
-							$sorgu = mysqli_query($link,"select * from yazi");
+							$sorgu = mysqli_query($link,"select * from yazi where kategori='Mirasımız'");
 							$limit = 5; //Kayıtlar kaçar kaçar listelenecek
 							$kayitSayisi = mysqli_num_rows($sorgu); //Toplam Kayıt Sayısı
 							$sayfaSayisi = ceil($kayitSayisi/$limit); //Toplam Sayfa Sayısı
 							$baslangic = ($s*$limit)-$limit; //Hangi kayıttan başlanacak
 						
-							$sorgu = mysqli_query($link,"select * from yazi order by id desc limit $baslangic,$limit");
+							$sorgu = mysqli_query($link,"select * from yazi where kategori='Mirasımız' order by id desc limit $baslangic,$limit");
 							
 							while($kayit=mysqli_fetch_array($sorgu)){
 								echo '<div class="single-blog-post">';
@@ -92,11 +81,11 @@
 								echo '<li><i class="fa fa-calendar"></i> '.$kayit["tarih"].'</li>';
 								echo '</ul>';
 								echo '</div>';
-								echo '<a href="haber.php?id='.$kayit["id"].'">';
+								echo '<a href="index.php?task=yazi_view&yazi_id='.$kayit["id"].'">';
 								echo '<img src="'.$kayit["resim"].'" width=350>';
 								echo '</a>';
 								echo '<p>'.substr($kayit["metin"], 0, 350).'</p>';
-								echo '<a  class="btn btn-primary" href="haber.php?id='.$kayit["id"].'">Okumaya devam et</a>';
+								echo '<a  class="btn btn-primary" href="index.php?task=yazi_view&yazi_id='.$kayit["id"].'">Okumaya devam et</a>';
 								echo '</div>';
 								
 							}
