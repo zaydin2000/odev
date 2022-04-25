@@ -192,3 +192,10 @@ ul.sub-menu {
     color: #FE980F;
     margin-top: 10px;
 }
+.mesaj
+{
+    font-weight:bold; 
+    font-size: 24px;
+    color:red;
+    margin: 20px;
+}

@@ -85,6 +85,9 @@
         <option value="Mirasımız" <?php if($fields[kategori]=="Mirasımız" and $islem=='update') { echo "selected"; }; ?>>Mirasımız</option>
         <option value="Slider" <?php if($fields[kategori]=="Slider" and $islem=='update') { echo "selected"; }; ?>>Slider</option>
         <option value="Şehrimiz" <?php if($fields[kategori]=="Şehrimiz" and $islem=='update') { echo "selected"; }; ?>>Şehrimiz</option>
+        <option value="Hakkımda" <?php if($fields[kategori]=="Hakkımda" and $islem=='update') { echo "selected"; }; ?>>Hakkımda</option>
+        <option value="Eğitim" <?php if($fields[kategori]=="Eğitim" and $islem=='update') { echo "selected"; }; ?>>Eğitim</option>
+        <option value="İlgi_Alanlarım" <?php if($fields[kategori]=="İlgi_Alanlarım" and $islem=='update') { echo "selected"; }; ?>>İlgi Alanlarım</option>
       </select>
     </div>
   </div>
