@@ -58,14 +58,14 @@
 						<div class="collapse navbar-collapse">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li  class="nav-item active"><a href="index.php" >ANA SAYFA</a></li>
-								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=Hakkımda" class="nav-link" >HAKKIMDA</a></li>
-								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=Eğitim" class="nav-link" >EĞİTİM</a></li>
-								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=Şehrimiz" class="nav-link" >ŞEHRİM</a></li>
+								<li class="nav-item"><a href="index.php?task=yazi_view&yazi_id=25" class="nav-link" >HAKKIMDA</a></li>
+								<li class="nav-item"><a href="index.php?task=yazi_view&yazi_id=24" class="nav-link" >EĞİTİM</a></li>
+								<li class="nav-item"><a href="index.php?task=yazi_view&yazi_id=20" class="nav-link" >ŞEHRİM</a></li>
 								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=Mirasımız" class="nav-link" >MİRASIMIZ</a></li>
-								<li class="nav-item"><a href="index.php?task=yazi_listele&kategori=İlgi_Alanlarım" class="nav-link" >İLGİ ALANLARIM</a></li>
+								<li class="nav-item"><a href="index.php?task=ilgi_alanlarim" class="nav-link" >İLGİ ALANLARIM</a></li>
 								<li class="nav-item"><a href="index.php?task=iletisim" class="nav-link" >İLETİŞİM</a></li>
 							</ul>
-						</div>
+						</div>  
 					</div>
 					<div class="col-sm-4">
 					<div class="collapse navbar-collapse pull-right">
@@ -185,6 +185,8 @@
 					include('include/yazi_listele.php');
 				} elseif ($task=="iletisim") {
 					include('include/iletisim.php');
+				} elseif ($task=="ilgi_alanlarim") {
+					include('include/ilgialanlarim.php');
 				} elseif ($task=="admin" and $admin=="mesajlar") {
 					include('include/mesajlar.php');
 				} elseif($task!="admin") {

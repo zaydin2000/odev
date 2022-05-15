@@ -26,9 +26,11 @@
 								echo '<li><i class="fa fa-calendar"></i> '.$kayit["tarih"].'</li>';
 								echo '</ul>';
 								echo '</div>';
-								echo '<a href="index.php?task=yazi_view&yazi_id='.$kayit["id"].'">';
-								echo '<img src="'.$kayit["resim"].'" width=250>';
-								echo '</a>';
+								if(strlen($haber["resim"])>10) {
+									echo '<a href="index.php?task=yazi_view&yazi_id='.$kayit["id"].'">';
+									echo '<img src="'.$kayit["resim"].'" width=250>';
+									echo '</a>';
+								}
 								echo '<p>'.substr($kayit["metin"], 0, 350).'...</p>';
 								echo '<a  class="btn btn-primary" href="index.php?task=yazi_view&yazi_id='.$kayit["id"].'">Okumaya devam et</a>';
 								echo '</div>';

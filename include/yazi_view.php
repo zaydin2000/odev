@@ -16,8 +16,9 @@
 						echo '<div class="post-meta"><ul>';
 						echo '<li><i class="fa fa-calendar"></i> '.$haber["tarih"].'</li>';
 						echo '</ul></div>';
-						
-						echo '<a href=""><img src="'.$haber["resim"].'" alt=""></a>';
+						if(strlen($haber["resim"])>10) {
+							echo '<a href=""><img src="'.$haber["resim"].'" alt=""></a>';
+						}
 						echo '<p>'.$haber["metin"].'</p>';
 					}else{
 						echo '<script>window.location="index.php";</script></a>';
