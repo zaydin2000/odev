@@ -26,7 +26,7 @@
 								echo '<li><i class="fa fa-calendar"></i> '.$kayit["tarih"].'</li>';
 								echo '</ul>';
 								echo '</div>';
-								if(strlen($haber["resim"])>10) {
+								if(strlen($kayit["resim"])>0) {
 									echo '<a href="index.php?task=yazi_view&yazi_id='.$kayit["id"].'">';
 									echo '<img src="'.$kayit["resim"].'" width=250>';
 									echo '</a>';
