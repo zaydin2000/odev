@@ -92,7 +92,7 @@
 										
 										while($a = mysqli_fetch_array($sql)){
 											if($a){
-												echo '<li><a href="index.php?task=admin">PANEL</a></li>';
+												echo '<li><a href="index.php?task=admin&admin=yaziekle">PANEL</a></li>';
 												echo '<li><a href="index.php?task=logout"><i class="fa fa-lock"></i> Çıkış</a></li>';
 											}else{
 												setcookie("OK", "", time()-3600);
@@ -161,6 +161,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.php?task=admin&admin=yaziekle">Yazı Ekle</a></li>
+								<li><a href="index.php?task=admin&admin=mesajlar">Gelen Mesajlar</a></li>
 							</ul>
 						</div>
 					</div>
@@ -176,7 +177,7 @@
 				//include("include/api.php");
 				if($task=="login") {
 					include('include/login.php');
-				} elseif ($task=="admin") {
+				} elseif ($task=="admin" and $admin=="yaziekle") {
 					include('include/yaziekle.php');
 				} elseif ($task=="yazi_view") {
 					include('include/yazi_view.php');
@@ -184,7 +185,8 @@
 					include('include/yazi_listele.php');
 				} elseif ($task=="iletisim") {
 					include('include/iletisim.php');
-
+				} elseif ($task=="admin" and $admin=="mesajlar") {
+					include('include/mesajlar.php');
 				} elseif($task!="admin") {
 					include("include/mainpage.php");
 				}
